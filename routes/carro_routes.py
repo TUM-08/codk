@@ -19,3 +19,8 @@ def carro_get_by_id(carro_id):
 def carros_post():
     return create_carro(request.json)
 
+@carro_routes.route('/carro/<int:carro_id', methods=['put'])
+def carros_put(carro_id):
+    carros_data = request.json
+    return update_carro(carro_id, carros_data)
+
