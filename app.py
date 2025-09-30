@@ -1,6 +1,6 @@
-from flask import Flask # Importa o framework Flask para criar a aplicação web
+from flask import Flask  # Importa o framework Flask para criar a aplicação web
 from db import db  # Importa a instância do banco de dados SQLAlchemy
-from routes.carro_routes import carro_routes # Importa as rotas do módulo de carros
+from routes.carro_routes import carro_routes  # Importa as rotas do módulo de carros
 
 app = Flask(__name__) # Cria a instância da aplicação Flask
 

@@ -1,5 +1,5 @@
 from flask import Blueprint, request  
-from controllers.carro_controllers import get_carros, update_carro, create_carro, get_carro_by_id 
+from controllers.carro_controllers import get_carros, create_carro, get_carro_by_id, update_carro
 
 # Define um Blueprint para as rotas de "Carro"
 carro_routes = Blueprint('carro_routes', __name__)  
@@ -19,7 +19,7 @@ def carro_get_by_id(carro_id):
 def carros_post():
     return create_carro(request.json)
 
-@carro_routes.route('/carro/<int:carro_id', methods=['put'])
+@carro_routes.route('/carro/<int:carro_id>', methods=['put'])
 def carros_put(carro_id):
     carros_data = request.json
     return update_carro(carro_id, carros_data)
