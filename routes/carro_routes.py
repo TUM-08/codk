@@ -1,5 +1,5 @@
 from flask import Blueprint, request  
-from controllers.carro_controllers import get_carros, create_carro, get_carro_by_id 
+from controllers.carro_controllers import get_carros, update_carro, create_carro, get_carro_by_id 
 
 # Define um Blueprint para as rotas de "Carro"
 carro_routes = Blueprint('carro_routes', __name__)  

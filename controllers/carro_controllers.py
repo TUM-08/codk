@@ -70,14 +70,14 @@ def create_carro(carro_data):
 
     # Função para atualizar um carro por ID
     def update_carro(carro_id, carro_data):
-        carro = Carro.query.get(carro_id) # Buscar o carro pelo ID
+        carro = Carro.query.get(carro_id)  # Buscar o carro pelo ID
 
-        if not carro: # Se o carro não for encontrado, retorna erro
+        if not carro:  # Se o carro não for encontrado, retorna erro
             response = make_response(
                 json.dumps({'mensagem': 'Carro não encontrado.'}, ensure_ascii=False),
                 404 # Código HTTP 404 para "Não encontrado"
                 )
-            response.headers['Content-Type'] = 'application/json'  #Garante que a resposta seja em json
+            response.headers['Content-Type'] = 'application/json'   #Garante que a resposta seja em json
             return response
         # valida se todos os campos obrigatorios foram fornecidos
         if not all(key in carro_data for key in ['modelo', 'marca', 'ano']):
@@ -85,7 +85,7 @@ def create_carro(carro_data):
                 json.dumps({'mensage': 'Dados invalidos. Modelo, marca e ano são abrigatórios'}, ensure_ascii=False),
                 400 # Codigo HTTP 400 para requisição invalida
             )
-            response.headers['Content-Type'] = 'application' #define que a resposta é em json
+            response.headers['Content-Type'] = 'application'  #define que a resposta é em json
             return response
         
         # Atualiza os dados do carro
@@ -93,7 +93,7 @@ def create_carro(carro_data):
         carro.marca = carro_data['marca']
         carro.ano = carro_data['ano']
 
-        db.session.commit()  #confirma a atualização no banco de dados
+        db.session.commit()   #confirma a atualização no banco de dados
 
         # retorna a resposta com os dados do carro atualizado
         response = make_response(
@@ -102,5 +102,5 @@ def create_carro(carro_data):
                 'carro': carro.json()
                 }, ensure_ascii=False, sort_keys=False)
         )
-        response.headers['Content-Type'] = 'application'  #Define que a resposta é em JSON
+        response.headers['Content-Type'] = 'application'   #Define que a resposta é em JSON
         return response
